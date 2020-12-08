@@ -23,9 +23,9 @@ public class BrowserStackBaseTest {
 	public static final String AUTOMATE_KEY = System.getenv("SAUCE_ACCESS_KEY");
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
-	@Parameters({"browser", "browser_version", "os", "os_version"})
+	@Parameters({"browser", "browser_version", "os_name_version"})
 	@BeforeMethod
-	public void setUp(String browserName, String browser_version, String os, String os_version,  Method name) {
+	public void setUp(String browserName, String browser_version, String os_name_version,  Method name) {
 
 		System.out.println("browser name is : " + browserName);
 		System.out.println("URL  is : " + URL);
@@ -33,18 +33,18 @@ public class BrowserStackBaseTest {
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
         
-		caps.setCapability("os", os);
-		caps.setCapability("os_version", os_version);
-		caps.setCapability("version", browser_version);
+		//caps.setCapability("os", os);
+		caps.setCapability("platformName", os_name_version);
+		caps.setCapability("browserVersion", browser_version);
 		caps.setCapability("name", methodName + " - " + System.getenv("BUILD_NUMBER"));
 		caps.setCapability("build", System.getenv("BUILD_NUMBER"));
 
 		if (browserName.equals("Chrome")) {
 			WebDriverManager.chromedriver().setup();
-			caps.setCapability("browser", "Chrome");
+			caps.setCapability("browserName", "Chrome");
 		} else if (browserName.equals("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			caps.setCapability("browser", "Firefox");
+			caps.setCapability("browserName", "Firefox");
 		}
 		try {
 			driver = new RemoteWebDriver(new URL(URL), caps);
