@@ -19,15 +19,16 @@ public class BrowserStackBaseTest {
 	
 	
 	WebDriver driver;
-	public static final String USERNAME = "naveennyoutube1";
-	public static final String AUTOMATE_KEY = "x4jxqdPfi257ZAxucwbv";
-	public static final String URL = "https://" + System.getenv("SAUCE_USERNAME") + ":" + System.getenv("SAUCE_ACCESS_KEY") + "@hub-cloud.browserstack.com/wd/hub";
+	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
+	public static final String AUTOMATE_KEY = System.getenv("SAUCE_ACCESS_KEY");
+	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@Parameters({"browser", "browser_version", "os", "os_version"})
 	@BeforeMethod
 	public void setUp(String browserName, String browser_version, String os, String os_version,  Method name) {
 
 		System.out.println("browser name is : " + browserName);
+		System.out.println("URL  is : " + URL);
 		String methodName = name.getName();
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
