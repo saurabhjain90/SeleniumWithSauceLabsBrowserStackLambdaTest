@@ -21,7 +21,7 @@ public class BrowserStackBaseTest {
 	WebDriver driver;
 	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
 	public static final String AUTOMATE_KEY = System.getenv("SAUCE_ACCESS_KEY");
-	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
 	@Parameters({"browser", "browser_version", "os", "os_version"})
 	@BeforeMethod
@@ -36,7 +36,8 @@ public class BrowserStackBaseTest {
 		caps.setCapability("os", os);
 		caps.setCapability("os_version", os_version);
 		caps.setCapability("browser_version", browser_version);
-		caps.setCapability("name", methodName);
+		caps.setCapability("name", methodName+ System.getenv("BUILD_NUMBER"));
+		caps.setCapability("build", System.getenv("BUILD_NUMBER"));
 
 		if (browserName.equals("Chrome")) {
 			WebDriverManager.chromedriver().setup();
