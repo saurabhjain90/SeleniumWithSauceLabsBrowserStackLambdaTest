@@ -32,19 +32,20 @@ public class BrowserStackBaseTest {
 		String methodName = name.getName();
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
-        
 		//caps.setCapability("os", os);
-		caps.setCapability("platformName", os_name_version);
-		caps.setCapability("browserVersion", browser_version);
-		caps.setCapability("name", methodName + " - " + System.getenv("JOB_NAME") );
-		caps.setCapability("build", System.getenv("JOB_NAME") + System.getenv("BUILD_NUMBER"));
+		//caps.setCapability("platformName", os_name_version);
+		caps.setCapability("platform", os_name_version);
+		//caps.setCapability("browserVersion", browser_version);
+		caps.setCapability("version", browser_version);
+		//caps.setCapability("name", methodName + " - " + System.getenv("JOB_NAME") );
+		caps.setCapability("build", System.getenv("JOB_NAME")+ " - " + System.getenv("STAGE_NAME") + " - " + System.getenv("BUILD_NUMBER"));
 
 		if (browserName.equals("Chrome")) {
 			WebDriverManager.chromedriver().setup();
-			caps.setCapability("browserName", "Chrome");
+			//caps.setCapability("browserName", "Chrome");
 		} else if (browserName.equals("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			caps.setCapability("browserName", "Firefox");
+			//caps.setCapability("browserName", "Firefox");
 		}
 		try {
 			driver = new RemoteWebDriver(new URL(URL), caps);
