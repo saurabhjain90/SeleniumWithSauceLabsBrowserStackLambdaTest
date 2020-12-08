@@ -35,7 +35,7 @@ public class BrowserStackBaseTest {
         
 		caps.setCapability("os", os);
 		caps.setCapability("os_version", os_version);
-		caps.setCapability("browser_version", browser_version);
+		caps.setCapability("version", browser_version);
 		caps.setCapability("name", methodName + " - " + System.getenv("BUILD_NUMBER"));
 		caps.setCapability("build", System.getenv("BUILD_NUMBER"));
 
