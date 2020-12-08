@@ -15,8 +15,10 @@ pipeline {
      agent any
      steps {
       sauce('sauceuser-np'){
-        sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
+        sauceconnect(useGeneratedTunnelIdentifier: false, verboseLogging: true) {
             sh 'mvn test'
+            junit 'reports/**'
+            step([$class: 'SauceOnDemandTestPublisher'])
         }
       }
      }
