@@ -21,7 +21,7 @@ public class BrowserStackBaseTest {
 	WebDriver driver;
 	public static final String USERNAME = "naveennyoutube1";
 	public static final String AUTOMATE_KEY = "x4jxqdPfi257ZAxucwbv";
-	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	public static final String URL = "https://" + System.getenv("SAUCE_USERNAME") + ":" + System.getenv("SAUCE_ACCESS_KEY") + "@hub-cloud.browserstack.com/wd/hub";
 
 	@Parameters({"browser", "browser_version", "os", "os_version"})
 	@BeforeMethod
