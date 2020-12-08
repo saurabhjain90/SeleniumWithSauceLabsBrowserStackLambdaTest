@@ -31,7 +31,16 @@ public class BrowserStackBaseTest {
 		System.out.println("URL  is : " + URL);
 		String methodName = name.getName();
 		
-		DesiredCapabilities caps = new DesiredCapabilities();
+		DesiredCapabilities caps = null;
+		if (browserName.equals("Chrome")) {
+			caps = DesiredCapabilities.chrome();
+			//WebDriverManager.chromedriver().setup();
+			//caps.setCapability("browserName", "Chrome");
+		} else if (browserName.equals("Firefox")) {
+			caps = DesiredCapabilities.firefox();
+			//WebDriverManager.firefoxdriver().setup();
+			//caps.setCapability("browserName", "Firefox");
+		}
 		//caps.setCapability("os", os);
 		//caps.setCapability("platformName", os_name_version);
 		caps.setCapability("platform", os_name_version);
@@ -40,13 +49,7 @@ public class BrowserStackBaseTest {
 		//caps.setCapability("name", methodName + " - " + System.getenv("JOB_NAME") );
 		caps.setCapability("build", System.getenv("JOB_NAME")+ " - " + System.getenv("STAGE_NAME") + " - " + System.getenv("BUILD_NUMBER"));
 
-		if (browserName.equals("Chrome")) {
-			WebDriverManager.chromedriver().setup();
-			//caps.setCapability("browserName", "Chrome");
-		} else if (browserName.equals("Firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			//caps.setCapability("browserName", "Firefox");
-		}
+		
 		try {
 			driver = new RemoteWebDriver(new URL(URL), caps);
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
