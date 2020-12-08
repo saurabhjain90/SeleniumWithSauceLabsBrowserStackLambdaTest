@@ -36,8 +36,8 @@ public class BrowserStackBaseTest {
 		//caps.setCapability("os", os);
 		caps.setCapability("platformName", os_name_version);
 		caps.setCapability("browserVersion", browser_version);
-		caps.setCapability("Name", methodName + " - " + System.getenv("BUILD_NUMBER"));
-		caps.setCapability("Build", System.getenv("BUILD_DISPLAY_NAME") + System.getenv("BUILD_NUMBER"));
+		caps.setCapability("name", methodName + " - " + System.getenv("JOB_NAME") );
+		caps.setCapability("build", System.getenv("JOB_NAME") + System.getenv("BUILD_NUMBER"));
 
 		if (browserName.equals("Chrome")) {
 			WebDriverManager.chromedriver().setup();
