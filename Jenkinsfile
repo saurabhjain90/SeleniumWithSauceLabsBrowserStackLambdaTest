@@ -14,7 +14,7 @@ pipeline {
     stage("Tests") {
      agent any
      steps {
-      sauce('saubsaucelabs-np'){
+      sauce('04a12a99-9003-4f07-9094-1af9831072ab'){
         sauceconnect(useGeneratedTunnelIdentifier: false, verboseLogging: true) {
             sh 'mvn test'
             //junit '**/junitreports/*.xml'
