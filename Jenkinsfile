@@ -14,7 +14,7 @@ pipeline {
     stage("Tests") {
      agent any
      steps {
-      sauce('sauceuser-np'){
+      sauce('sauceuser-EU'){
         sauceconnect(useGeneratedTunnelIdentifier: false, verboseLogging: true) {
             sh 'mvn test'
             //junit '**/junitreports/*.xml'
