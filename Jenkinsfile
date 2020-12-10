@@ -17,7 +17,7 @@ pipeline {
       sauce('sauceuser'){
         sauceconnect(useGeneratedTunnelIdentifier: false, verboseLogging: true) {
             sh 'mvn test'
-            //junit '**/junitreports/*.xml'
+            junit '**/junitreports/*.xml'
             step([$class: 'SauceOnDemandTestPublisher'])
         }
       }
