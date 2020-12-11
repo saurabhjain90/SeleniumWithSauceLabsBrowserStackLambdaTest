@@ -34,10 +34,9 @@ pipeline {
          "stageName":"${env.STAGE_NAME}",
          "buildNumber":"${env.BUILD_NUMBER}"
        }'\
+	    """
     	}
-}
-      
-      
+	}
      }
     }
   }
