@@ -23,7 +23,7 @@ pipeline {
       }
       post {
 	      success {
-	      sh “””
+	      sh """
 	      curl --location --request POST ‘https://devopsinteg1.service-now.com/api/sn_devops/v1/devops/tool/?toolId=826b10a0db8124104b59f7541d961919'
 	      --header ‘Accept: application/json’ \
        --header ‘Authorization: Basic ZGV2b3BzLmludGVncmF0aW9uLnVzZXI6ZGV2b3Bz’ \
