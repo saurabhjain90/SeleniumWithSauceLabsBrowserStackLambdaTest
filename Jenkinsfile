@@ -11,7 +11,7 @@ pipeline {
        checkout scm
      }
     }
-    stage("Tests") {
+    stage("Test") {
      agent any
      steps {
       sauce('sauceuser'){
