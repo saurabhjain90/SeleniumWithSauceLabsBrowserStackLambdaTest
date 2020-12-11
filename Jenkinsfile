@@ -21,6 +21,7 @@ pipeline {
             step([$class: 'SauceOnDemandTestPublisher'])
         }
       }
+     }
       post {
 	      success {
 	      sh """
@@ -36,7 +37,7 @@ pipeline {
        }'\
 	    """
     	}
-	}
+	
      }
     }
   }
