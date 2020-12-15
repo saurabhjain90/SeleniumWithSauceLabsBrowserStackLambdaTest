@@ -22,22 +22,7 @@ pipeline {
         }
       }
      }
-      post {
-	      success {
-	      sh """
-	      curl --location --request POST 'htt' \
-	      --header 'Accept: application/json' \
-	      --header 'Authorization: Basic sdf' \
-	      --header 'Content-Type: application/json' \
-	      --data-raw \'{ 
-	      	"original_payload":"${env.JOB_NAME}-${env.STAGE_NAME}-${env.BUILD_NUMBER}",
-         	"pipeline":"${env.JOB_NAME}",
-         	"stageName":"${env.STAGE_NAME}",
-         	"buildNumber":"${env.BUILD_NUMBER}"
-		}'\
-	    	"""
-    	      }
-      }
+      
     }
   }
 }
